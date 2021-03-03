@@ -1,20 +1,21 @@
 import React from 'react';
 
-const Comment = () => {
+const Comment = (props) => {
+    console.log(props)
     return (
         <div className="comment">
             <a href="/" className="avatar">
-                <img src="https://source.unsplash.com/random" alt="avatar" />
+                <img src={props.imgSrc} alt="avatar" />
             </a>
             <div className="content">
                 <a href="/" className="author">
-                    Sam
+                    {props.author}
                 </a>
             </div>
             <div className="metaData">
-                <span className="date">Today at 6:00PM</span>
+                <span className="date">{props.date}</span>
             </div>
-            <div className="text">Nice Blog Post</div>
+            <div className="text">{props.text}</div>
         </div>
     );
 }
