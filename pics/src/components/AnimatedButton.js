@@ -14,10 +14,10 @@ export default class AnimatedButton extends React.Component {
 
         return (
             <button className="ui button mini" type={this.props.type}>
-                <div class={classList} tabindex="0" style={{width: '100%'}}>
-                    <div class="visible content">{this.props.visible}
+                <div className={classList} style={{width: '100%'}}>
+                    <div className="visible content">{this.props.visible}
                     </div>
-                    <div class="hidden content">
+                    <div className="hidden content">
                         {this.props.hidden}
                     </div>
                 </div>
