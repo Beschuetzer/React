@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from './Spinner';
 import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
@@ -6,7 +7,7 @@ class App extends React.Component {
         lat: null,
         errMsg: '',
     }
-    render() {
+    renderContent() {
         if (this.state.errMsg && !this.state.lat) {
             return (
                 <div>Error: {this.state.errMsg}</div>
@@ -19,9 +20,16 @@ class App extends React.Component {
         }
         else {
             return (
-                <div>Loading...</div>
+                <Spinner message="Waiting for Response"></Spinner>
             );
         }
+    }
+    render() {
+        return (
+            <div className="border red">
+                {this.renderContent()}
+            </div>
+        );
     }
     componentDidMount(){
         console.log('Rendered to Screen------------------------------------------------');
