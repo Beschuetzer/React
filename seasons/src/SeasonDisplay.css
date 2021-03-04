@@ -32,3 +32,20 @@
 .summer {
 	background-color: orange;
 }
+.snowflake, .sun {
+	animation: spin 60s infinite !important;
+}
+.snowflake:nth-of-type(2), .sun:nth-of-type(2) {
+	animation: spin-reverse 60s infinite !important;
+}
+
+@keyframes spin {
+	50% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes spin-reverse {
+	50% {
+		transform: rotate(-360deg);
+	}
+}
