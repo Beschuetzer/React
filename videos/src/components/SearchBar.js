@@ -4,12 +4,13 @@ export default class SearchBar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			searchQuery: "dfd",
+			searchQuery: "",
 		};
 	}
 	onFormSubmit = (e) => {
         e.preventDefault();
-        this.props.onFormSubmit(this.state.searchQuery);
+		console.log('this.props =', this.props);
+        this.props.onSearchSubmit(this.state.searchQuery);
     }
 	render() {
 		return (

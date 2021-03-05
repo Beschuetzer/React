@@ -1,4 +1,5 @@
 import React from 'react';
+import youtube from '../apis/youtube';
 import SearchBar from './SearchBar';
 import VideoDetail from './VideoDetail';
 import VideoItem from './VideoItem';
@@ -8,11 +9,21 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-
+            videos: [],
         }
     }
-    onFormSubmit = (searchQuery) => {
-        console.log('searchQuery =', searchQuery);
+    onSearchSubmit = async (searchQuery) => {
+        try {
+            const results = await youtube.get(`/search`, {
+                params: {
+                    q: searchQuery,
+                }
+            });
+            console.log('results =', results);
+            this.setState({videos: results.data.items})
+        } catch (error) {
+            console.log('error =', error);
+        }
     }
     componentDidMount = () => {
         //called once when component finishes rendering initially
@@ -23,8 +34,8 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="ui container" style={{marginTop: "1rem"}}>
-                <SearchBar onFormSubmit={this.onFormSubmit}/>
-                
+                <SearchBar onSearchSubmit={this.onSearchSubmit}/>
+                <VideoList videos={this.state.videos}/>
             </div>
         );
     }
