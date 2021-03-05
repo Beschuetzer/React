@@ -7,15 +7,20 @@ export default class VideoItem extends React.Component {
         this.state = {
          
         };
+        this.divRef = React.createRef();
+    }
+    onVideoSelectLocal = (e) => {
+        this.props.onVideoSelect(this.divRef.current.dataset.id)
     }
     render() {
+        console.log('this.props.video.id.videoId =', this.props.video.id.videoId);
         return (
-            <div className="item video-item">
+            <div className="item video-item" onClick={this.onVideoSelectLocal} data-id={this.props.video.id.videoId} ref={this.divRef}>
                 {/* <i className="large github middle aligned icon"></i> */}
                 <img src={this.props.video.snippet.thumbnails.medium.url} alt={this.props.video.snippet.description}/>
 
                 <div className="content">
-                    <a href="/" className="header">{this.props.video.snippet.title}</a>
+                    <h4 className="header">{this.props.video.snippet.title}</h4>
                 </div>
             </div>
         );
