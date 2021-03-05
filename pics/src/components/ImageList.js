@@ -1,16 +1,16 @@
 import React from 'react';
 import AnimatedButton from './AnimatedButton';
 
-export default class ImageList extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            //initializing props to keep track of here
-        };
-    }
-    render() {
-        return (
-            <div>ImageList Here</div>
-        );
-    }
+
+const ImageList = (props) => {
+    const images = props.images.map(({id, urls, description}) => {
+        return <img key={id} src={urls.regular} alt={description}/>
+    });
+
+
+    return (
+        <div>{images}</div>
+    );
 }
+
+export default ImageList
