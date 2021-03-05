@@ -1,0 +1,20 @@
+.video-item {
+    /* display: flex !important;
+    justify-content: space-between;
+    align-items: center; */
+}
+.video-item img {
+    width: 100%;
+    cursor: pointer;
+}
+.video-list {
+    max-width: 50%;
+    min-width: 12rem;
+}
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+}
+.video-list{
+    margin-top: 0 !important;
+}

@@ -35,7 +35,10 @@ export default class App extends React.Component {
         return (
             <div className="ui container" style={{marginTop: "1rem"}}>
                 <SearchBar onSearchSubmit={this.onSearchSubmit}/>
-                <VideoList videos={this.state.videos}/>
+                <div className="video-grid">
+                    <VideoDetail/>
+                    <VideoList videos={this.state.videos}/>
+                </div>
             </div>
         );
     }

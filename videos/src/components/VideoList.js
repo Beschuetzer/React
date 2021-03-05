@@ -19,7 +19,7 @@ export default class VideoList extends React.Component {
 
         return (
             // {renderedVideos}
-            <div>
+            <div className="ui divided relaxed list video-list">
                 {renderedVideos}
             </div>
         );
