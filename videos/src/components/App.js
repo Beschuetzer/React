@@ -13,8 +13,9 @@ export default class App extends React.Component {
             selectedVideo: null,
         }
     }
-    onVideoSelect = (videoId) => {
-        console.log('videoId =', videoId);
+    onVideoSelect = (video) => {
+        console.log('video =', video);
+        this.setState({selectedVideo: video});
     }
     onSearchSubmit = async (searchQuery) => {
         try {
@@ -40,7 +41,7 @@ export default class App extends React.Component {
             <div className="ui container" style={{marginTop: "1rem"}}>
                 <SearchBar onSearchSubmit={this.onSearchSubmit}/>
                 <div className="video-grid">
-                    <VideoDetail/>
+                    <VideoDetail selectedVideo={this.state.selectedVideo}/>
                     <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
                 </div>
             </div>
