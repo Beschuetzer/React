@@ -2,7 +2,6 @@ import React from 'react';
 import youtube from '../apis/youtube';
 import SearchBar from './SearchBar';
 import VideoDetail from './VideoDetail';
-import VideoItem from './VideoItem';
 import VideoList from './VideoList';
 
 import './css/style.css';
@@ -16,7 +15,9 @@ export default class App extends React.Component {
     }
     onVideoSelect = (video) => {
         console.log('video =', video);
-        this.setState({selectedVideo: video});
+        this.setState({
+            selectedVideo: video,
+        });
     }
     onSearchSubmit = async (searchQuery) => {
         try {
@@ -26,13 +27,17 @@ export default class App extends React.Component {
                 }
             });
             console.log('results =', results);
-            this.setState({videos: results.data.items})
+            this.setState({
+                videos: results.data.items,
+                selectedVideo: results.data.items[0],
+            })
         } catch (error) {
             console.log('error =', error);
         }
     }
     componentDidMount = () => {
         //called once when component finishes rendering initially
+        this.onSearchSubmit('my app');
     }
     componentDidUpdate = () => {
         //called everytime  a component updates itself

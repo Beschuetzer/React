@@ -28,12 +28,12 @@ const VideoDetail = ({selectedVideo: video}) => {
             </div>
         );
     }
+    const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
+
     return (
         <div className="video-detail">
             <div className="video-detail__video">
-                <video>
-                    <source></source>
-                </video>
+                <iframe title='video-player' className="video-detail__iframe" src={videoSrc}></iframe>
             </div>
             <div className='video-detail__textbox'>
                 <h4 className="video-detail__header">
@@ -43,6 +43,7 @@ const VideoDetail = ({selectedVideo: video}) => {
                     {video.snippet.description}
                 </p>
             </div>
+           
         </div>
     );
 }
