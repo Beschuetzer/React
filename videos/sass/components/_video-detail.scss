@@ -10,13 +10,13 @@
         
     }
     &__textbox {
-        
+        text-align: center;
     }
     &__header {
-        font-size: $default-font-size * 1.5;
-        padding: $default-font-size;
+        font-size: 1rem;
+        padding: 1rem;
     }
     &__description {
-        
+        padding-bottom: 1rem;
     }
 }
