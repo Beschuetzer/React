@@ -1,6 +1,0 @@
-.video-detail {
-    display: grid;
-    grid-template-rows: 1fr max-content;
-    align-items: center;
-    justify-items: center;
-}

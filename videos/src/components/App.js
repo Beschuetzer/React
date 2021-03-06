@@ -5,6 +5,7 @@ import VideoDetail from './VideoDetail';
 import VideoItem from './VideoItem';
 import VideoList from './VideoList';
 
+import './css/style.css';
 export default class App extends React.Component {
     constructor() {
         super();
@@ -38,7 +39,7 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <div className="ui container" style={{marginTop: "1rem"}}>
+            <div className="grid">
                 <SearchBar onSearchSubmit={this.onSearchSubmit}/>
                 <div className="video-grid">
                     <VideoDetail selectedVideo={this.state.selectedVideo}/>

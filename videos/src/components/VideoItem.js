@@ -1,5 +1,4 @@
 import React from 'react';
-import './css/VideoItem.css';
 
 // export default class VideoItem extends React.Component {
 //     constructor() {
@@ -31,12 +30,12 @@ import './css/VideoItem.css';
 
 const VideoItem = ({video, onVideoSelect}) => {
     return (
-        <div className="item video-item" onClick={() => onVideoSelect(video)}>
+        <div className="video-item" onClick={() => onVideoSelect(video)}>
             {/* <i className="large github middle aligned icon"></i> */}
-            <img src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>
+            <img className="video-item__image" src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>
 
             <div className="content">
-                <h4 className="header">{video.snippet.title}</h4>
+                <h4 className="video-item__header">{video.snippet.title}</h4>
             </div>
         </div>
     );

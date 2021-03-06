@@ -1,0 +1,22 @@
+.video-detail {
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    align-items: center;
+    justify-items: center;
+    @include respond(tab-port) {
+        grid-column: 1 / -1;
+    }
+    &__video {
+        
+    }
+    &__textbox {
+        
+    }
+    &__header {
+        font-size: $default-font-size * 1.5;
+        padding: $default-font-size;
+    }
+    &__description {
+        
+    }
+}

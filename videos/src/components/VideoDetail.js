@@ -1,5 +1,6 @@
 import React from 'react';
-import './css/VideoDetail.css';
+import './css/style.css';
+
 // export default class VideoDetail extends React.Component {
 //     constructor() {
 //         super();
@@ -21,7 +22,11 @@ import './css/VideoDetail.css';
 
 const VideoDetail = ({selectedVideo: video}) => {
     if (!video) {
-        return <div>Loading</div>
+        return (
+            <div className="video-detail">
+                Loading
+            </div>
+        );
     }
     return (
         <div className="video-detail">

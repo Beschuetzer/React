@@ -1,0 +1,33 @@
+.video-item {
+    border-radius: 1rem 1rem;
+    border-bottom: 1px solid #faf9f9;
+    box-shadow: 0 1rem 2rem rgb(51 51 51 / 25%);
+    overflow: hidden;
+    &:not(:first-child) {
+        margin-top: .5rem;
+        @include respond(tab-port) {
+            margin-top: 0;
+        }
+    }
+    &__image {
+        width: 100%;
+        cursor: pointer;
+    }
+    &__header {
+        padding: 1rem .5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+
+    @include respond(tab-port) {
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: 92.5vh min-content;
+    }
+}
