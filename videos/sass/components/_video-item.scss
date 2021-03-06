@@ -18,16 +18,19 @@
         cursor: pointer;
         font-size: 1rem;
         text-align: center;
+        @include respond(tab-port) {
+            font-size: .9rem;
+        }
     }
     
 }
 
 .video-grid {
     display: grid;
-    grid-template-columns: 1fr min-content;
-
+    grid-template-columns: 1fr minmax(50px, min-content);
+    grid-column: 1/-1;
     @include respond(tab-port) {
         grid-template-columns: repeat(4,1fr);
-        grid-template-rows: 92.5vh min-content;
+        grid-template-rows: max-content min-content;
     }
 }
