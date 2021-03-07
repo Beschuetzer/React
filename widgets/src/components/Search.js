@@ -5,11 +5,13 @@ import axios from 'axios';
 import './style.css';
 
 const Search = () => {
-    const [term, setTerm] = useState("programming");
+    const startQuery = 'programming';
+    const [term, setTerm] = useState(startQuery);
     const [results, setResults] = useState([]);
 
     useEffect(() => {
         if (term !== '')  {
+            const timeout = term === startQuery ? 0 : 1000;
             const searchTimeout = setTimeout(() => {
                 axios.get('https://en.wikipedia.org/w/api.php', {
                     params: {
@@ -22,7 +24,8 @@ const Search = () => {
                 }).then((response) => {
                     setResults(response.data.query.search);
                 });
-            }, 750)
+            }, timeout);
+
             return () => {
                 clearTimeout(searchTimeout);
             }
@@ -53,7 +56,7 @@ const Search = () => {
                         <label htmlFor="search">Search:</label>
                         <input 
                             id="search"
-                            value={term.trim()}
+                            value={term}
                             onChange={e => setTerm(e.target.value)} 
                             className='input'/>
                     </div>
