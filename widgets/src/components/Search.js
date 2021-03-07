@@ -5,7 +5,7 @@ import axios from 'axios';
 import './style.css';
 
 const Search = () => {
-    const startQuery = 'programming';
+    const startQuery = 'supercalifragilisticexpialidocious';
     const [term, setTerm] = useState(startQuery);
     const [results, setResults] = useState([]);
 
@@ -51,14 +51,16 @@ const Search = () => {
     return (
         <React.Fragment>
             <div className="ui segment">
-                <form className="ui form">
+                <form onSubmit={e => e.preventDefault()} className="ui form">
                     <div className="field">
                         <label htmlFor="search">Search:</label>
                         <input 
                             id="search"
                             value={term}
                             onChange={e => setTerm(e.target.value)} 
-                            className='input'/>
+                            className='input'
+                            onFocus={e => e.target.value = ''}
+                        />
                     </div>
                 </form>
             </div>
