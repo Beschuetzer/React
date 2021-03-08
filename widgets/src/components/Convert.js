@@ -34,9 +34,8 @@ const Convert = ({source, target}) => {
                     key: googleTranslateApiKey,
                 }
             }).then((response) => {
-               console.log('response =', response); 
-               setTranslatedText(response.data.data.translations[0].translatedText)
-            })            
+               setTranslatedText(response.data.data.translations[0].translatedText);
+            });       
         }
         else return;
     }, [debouncedSource, debouncedTarget])
