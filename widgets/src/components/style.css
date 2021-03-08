@@ -7,3 +7,6 @@
 .header {
     margin-bottom: .25rem;
 }
+.content {
+    padding: 0 .1rem 0 .5rem;
+}

@@ -7,30 +7,68 @@ import './style.css';
 const Search = () => {
     const startQuery = 'supercalifragilisticexpialidocious';
     const [term, setTerm] = useState(startQuery);
+    const [debouncedTerm, setDebouncedTerm] = useState(term);
     const [results, setResults] = useState([]);
+    const debounceTimeout = 1000;
+
+
+    //instructor's approach
+
+    //this useEffect updates the debouncedTerm 1000 ms after term changes and the user is done typing (cancels the update if the user types before 1000ms has elapsed)
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setDebouncedTerm(term);
+        }, debounceTimeout);
+
+        return (() => {
+            clearTimeout(timeoutId);
+        })
+    }, [term]);
 
     useEffect(() => {
-        if (term !== '')  {
-            const timeout = term === startQuery ? 0 : 1000;
-            const searchTimeout = setTimeout(() => {
-                axios.get('https://en.wikipedia.org/w/api.php', {
+        if (debouncedTerm !== '') {
+            const search = async () => {
+                const response = await axios.get('https://en.wikipedia.org/w/api.php', {
                     params: {
-                        srsearch: term,
+                        srsearch: debouncedTerm,
                         action: 'query',
                         list: 'search',
                         format: 'json',
                         origin: '*'
                     }
-                }).then((response) => {
-                    setResults(response.data.query.search);
                 });
-            }, timeout);
-
-            return () => {
-                clearTimeout(searchTimeout);
+                setResults(response.data.query.search);
             }
+            search();
         }
-    }, [term]);
+    }, [debouncedTerm]);
+
+
+
+
+    //my approach
+    // useEffect(() => {
+    //     if (term !== '')  {
+    //         const timeout = term === startQuery ? 0 : 1000;
+    //         const searchTimeout = setTimeout(() => {
+    //             axios.get('https://en.wikipedia.org/w/api.php', {
+    //                 params: {
+    //                     srsearch: term,
+    //                     action: 'query',
+    //                     list: 'search',
+    //                     format: 'json',
+    //                     origin: '*'
+    //                 }
+    //             }).then((response) => {
+    //                 setResults(response.data.query.search);
+    //             });
+    //         }, timeout);
+
+    //         return () => {
+    //             clearTimeout(searchTimeout);
+    //         }
+    //     }
+    // }, [term]);
 
     const getResultsRendered = () => {
         return results.map((result, index) => {
