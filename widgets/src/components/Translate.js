@@ -24,7 +24,7 @@ const Translate = () => {
     const languageCode = languageOptions.map(option => {
         if (option.label === language) return option.value;
         return null;
-    })
+    }).filter(item => item !== null)[0];
     console.log('languageCode =', languageCode);
     return (
         <div className="ui">
@@ -50,7 +50,7 @@ const Translate = () => {
                 onSelectedChange={setLanguage}
             />
             <br/>
-            <Convert source={msgToTranslate} target={language}/>
+            <Convert source={msgToTranslate} target={languageCode}/>
         </div>
     );  
 }
