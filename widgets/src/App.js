@@ -48,21 +48,20 @@ const dropDownOptions = [
 
 const App = () => {
     const [selected, setSelected] = useState(null);
-    const [currentUrl, setCurrentUrl] = useState('/');
 
     return (
         <div className="ui container">
-            <Header setCurrentUrl={setCurrentUrl}/>
-            <Route currentUrl={currentUrl} path='/'>
+            <Header/>
+            <Route path='/'>
                 <Accordion items={items}/>
             </Route>
-            <Route currentUrl={currentUrl} path='/dropdown'>
+            <Route path='/dropdown'>
                 <Dropdown options={dropDownOptions} labelText="Select a Color" selected={selected} onSelectedChange={setSelected}/>
             </Route>
-            <Route currentUrl={currentUrl} path='/list'>
+            <Route path='/list'>
                 <Search/>
             </Route>
-            <Route currentUrl={currentUrl} path='/translate'>
+            <Route path='/translate'>
                 <Translate/>
             </Route>
         </div>
