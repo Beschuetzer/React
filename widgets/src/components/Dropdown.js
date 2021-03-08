@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 const Dropdown = (({options, labelText, selected, onSelectedChange}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +8,15 @@ const Dropdown = (({options, labelText, selected, onSelectedChange}) => {
     console.log('labelText =', labelText);
     console.log('variable =', selected);
     console.log('setter =', onSelectedChange);
+
+
+    useEffect(() => {
+        document.body.addEventListener('click', handleBodyClick)
+    }, []);
+
+    const handleBodyClick = (e) => {
+        setIsOpen(true);
+    }
 
     const optionsRendered = options.map(option => {
         if (option.label === selected) return null;

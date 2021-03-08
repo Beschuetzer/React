@@ -46,11 +46,8 @@ const dropDownOptions = [
 const App = () => {
     const [selected, setSelected] = useState(null);
 
-    const onAppClick = (e) => {
-        debugger;
-    }
     return (
-        <div onClick={onAppClick} className="ui container">
+        <div className="ui container">
             {/* <Accordion items={items}/> */}
             {/* <Search/> */}
             <Dropdown options={dropDownOptions} labelText="Select a Color" selected={selected} onSelectedChange={setSelected}/>
