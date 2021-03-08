@@ -7,7 +7,6 @@ const googleTranslateApiKey = "AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM"
 
 const Convert = ({source, target}) => {
     const [debouncedSource, setDebouncedSource] = useState(source);
-    const [debouncedTarget, setDebouncedTarget] = useState(target);
     const [translatedText, setTranslatedText] = useState("");
     console.log('translatedText =', translatedText);
 
@@ -15,22 +14,18 @@ const Convert = ({source, target}) => {
         const timeoutIdSource = setTimeout(() => {
             setDebouncedSource(source);
         }, 750);
-        const timeoutIdTarget = setTimeout(() => {
-            setDebouncedTarget(target);
-        }, 750);
 
         return (() => {
             clearTimeout(timeoutIdSource);
-            clearTimeout(timeoutIdTarget);
         });
-    }, [source, target]);
+    }, [source]);
 
     useEffect(() => {
-        if (debouncedSource && debouncedTarget) {
+        if (debouncedSource && debouncedSource !== '') {
             axios.post('https://translation.googleapis.com/language/translate/v2', {}, {
                 params: {
                     q: debouncedSource,
-                    target: debouncedTarget,
+                    target: target,
                     key: googleTranslateApiKey,
                 }
             }).then((response) => {
@@ -38,7 +33,7 @@ const Convert = ({source, target}) => {
             });       
         }
         else return;
-    }, [debouncedSource, debouncedTarget])
+    }, [debouncedSource, target])
 
     return (
         <div className="ui form">
