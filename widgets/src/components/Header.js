@@ -1,6 +1,7 @@
 import React from 'react';
+import Link from './Link';
 
-const Header = () => {
+const Header = ({setCurrentUrl}) => {
     const isAccordionActive = window.location.pathname === '/' ? 'active' : '';
     const isSearchActive = window.location.pathname === '/list' ? 'active' : '';
     const isDropdownActive = window.location.pathname === '/dropdown' ? 'active' : '';
@@ -8,10 +9,10 @@ const Header = () => {
 
     return (
         <div className="ui secondary pointing menu">
-            <a href="/" className={`item ${isAccordionActive}`}>Accordion</a>
-            <a href="/list" className={`item ${isSearchActive}`}>Search</a>
-            <a href="/dropdown" className={`item ${isDropdownActive}`}>Dropdown</a>
-            <a href="/translate" className={`item ${isTranslateActive}`}>Translate</a>
+            <Link setCurrentUrl={setCurrentUrl} href="/" className={`item ${isAccordionActive}`}>Accordion</Link>
+            <Link setCurrentUrl={setCurrentUrl} href="/list" className={`item ${isSearchActive}`}>Search</Link>
+            <Link setCurrentUrl={setCurrentUrl} href="/dropdown" className={`item ${isDropdownActive}`}>Dropdown</Link>
+            <Link setCurrentUrl={setCurrentUrl} href="/translate" className={`item ${isTranslateActive}`}>Translate</Link>
         </div>
     );
 }
