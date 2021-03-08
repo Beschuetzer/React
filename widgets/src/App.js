@@ -47,12 +47,37 @@ const dropDownOptions = [
 const App = () => {
     const [selected, setSelected] = useState(null);
 
+    const accordionJSX = <Accordion items={items}/>;
+    const dropdownJSX = <Dropdown options={dropDownOptions} labelText="Select a Color" selected={selected} onSelectedChange={setSelected}/>;
+    const searchJSX = <Search/>;
+    const translateJSX = <Translate />;
+
+    let ToShow = accordionJSX;
+
+    switch (window.location.pathname) {
+        case '/':
+            ToShow = accordionJSX;
+            break;
+        case '/list':
+            ToShow = searchJSX;
+            break;
+        case '/dropdown':
+            ToShow = dropdownJSX;
+            break;
+        case '/translate':
+            ToShow = translateJSX;
+            break;
+        default:
+            ToShow = accordionJSX;
+    }
+
     return (
         <div className="ui container">
-            {/* <Accordion items={items}/> */}
-            {/* <Search/> */}
-             {/* <Dropdown options={dropDownOptions} labelText="Select a Color" selected={selected} onSelectedChange={setSelected}/> */}
-             <Translate/>
+            {/* {showAccordion()}
+            {showList()}
+            {showDropdown()}
+            {showTranslate()} */}
+            {ToShow}
         </div>
     );
 }
