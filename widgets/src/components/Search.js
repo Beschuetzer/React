@@ -43,9 +43,6 @@ const Search = () => {
         }
     }, [debouncedTerm]);
 
-
-
-
     //my approach
     // useEffect(() => {
     //     if (term !== '')  {
