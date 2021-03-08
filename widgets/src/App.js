@@ -4,6 +4,8 @@ import Accordion from './components/Accordion';
 import Dropdown from './components/Dropdown';
 import Search from './components/Search';
 import Translate from './components/Translate';
+import Route from './components/Route';
+import Header from './components/Header';
 
 const items = [
     {
@@ -47,37 +49,21 @@ const dropDownOptions = [
 const App = () => {
     const [selected, setSelected] = useState(null);
 
-    const accordionJSX = <Accordion items={items}/>;
-    const dropdownJSX = <Dropdown options={dropDownOptions} labelText="Select a Color" selected={selected} onSelectedChange={setSelected}/>;
-    const searchJSX = <Search/>;
-    const translateJSX = <Translate />;
-
-    let ToShow = accordionJSX;
-
-    switch (window.location.pathname) {
-        case '/':
-            ToShow = accordionJSX;
-            break;
-        case '/list':
-            ToShow = searchJSX;
-            break;
-        case '/dropdown':
-            ToShow = dropdownJSX;
-            break;
-        case '/translate':
-            ToShow = translateJSX;
-            break;
-        default:
-            ToShow = accordionJSX;
-    }
-
     return (
         <div className="ui container">
-            {/* {showAccordion()}
-            {showList()}
-            {showDropdown()}
-            {showTranslate()} */}
-            {ToShow}
+            <Header/>
+            <Route path='/'>
+                <Accordion items={items}/>
+            </Route>
+            <Route path='/dropdown'>
+                <Dropdown options={dropDownOptions} labelText="Select a Color" selected={selected} onSelectedChange={setSelected}/>
+            </Route>
+            <Route path='/list'>
+                <Search/>
+            </Route>
+            <Route path='/translate'>
+                <Translate/>
+            </Route>
         </div>
     );
 }
