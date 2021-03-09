@@ -11,10 +11,6 @@ const App = () => {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
 
-    const onVideoSelect = (video) => {
-        setSelectedVideo(video);
-    }
-
     const onSearchSubmit = async (searchQuery) => {
         try {
             const results = await youtube.get(`/search`, {
@@ -38,7 +34,7 @@ const App = () => {
             <SearchBar onSearchSubmit={onSearchSubmit}/>
             <div className="video-grid">
                 <VideoDetail selectedVideo={selectedVideo}/>
-                <VideoList videos={videos} onVideoSelect={onVideoSelect}/>
+                <VideoList videos={videos} onVideoSelect={setSelectedVideo}/>
             </div>
         </div>
     );

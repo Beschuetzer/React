@@ -37,10 +37,10 @@ const VideoDetail = ({selectedVideo: video}) => {
             </div>
             <div className='video-detail__textbox'>
                 <h4 className="video-detail__header">
-                    {video.snippet.title}
+                    <span dangerouslySetInnerHTML={{__html: video.snippet.title}}></span>
                 </h4>
                 <p className="video-detail__description">
-                    {video.snippet.description}
+                    <span dangerouslySetInnerHTML={{__html: video.snippet.description}}></span>
                 </p>
             </div>
            

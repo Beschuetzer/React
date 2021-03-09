@@ -35,7 +35,7 @@ const VideoItem = ({video, onVideoSelect}) => {
             <img className="video-item__image" src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>
 
             <div className="content">
-                <h4 className="video-item__header">{video.snippet.title}</h4>
+                <h4 className="video-item__header"><span dangerouslySetInnerHTML={{__html: video.snippet.title}}></span></h4>
             </div>
         </div>
     );
