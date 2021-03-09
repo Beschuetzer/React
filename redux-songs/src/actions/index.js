@@ -4,3 +4,9 @@ export const selectSong = (song) => {
         payload: song,
     }
 }
+export const makeHappy = (currentHappiness) => {
+    return {
+        type: 'MAKE_HAPPY',
+        payload: currentHappiness,
+    }
+}

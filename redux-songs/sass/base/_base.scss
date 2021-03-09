@@ -33,7 +33,7 @@
     body {
         font-family: Open Sans, sans-serif;
         font-weight: 400;
-        line-height: 1.5;
+        line-height: 1.33;
     }
 
     #root {
@@ -44,7 +44,7 @@
 
     //Style selected text
     ::selection {
-        //background-color: $color-primary;
-        //color: $color-white;
+        background-color: $color-primary;
+        color: $color-white;
     }
     

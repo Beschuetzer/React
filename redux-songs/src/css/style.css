@@ -41,13 +41,18 @@ html {
 body {
   font-family: Open Sans, sans-serif;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.33;
 }
 
 #root {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   font-size: 1.6rem;
+}
+
+::selection {
+  background-color: #002a57;
+  color: #fff;
 }
 
 body {
@@ -141,6 +146,46 @@ body {
 
 .text-align-center {
   text-align: center !important;
+}
+
+.song-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #ccc;
+}
+.song-item__info {
+  padding: 0.528rem;
+  margin-left: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.song-item__title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+.song-item__artist {
+  font-size: 1.36rem;
+  font-style: italic;
+}
+.song-item__select {
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1.6rem 2.4rem;
+  border: none;
+  outline: none;
+  color: #002a57;
+  background-color: initial;
+  transition: background-color 0.33s ease;
+}
+.song-item__select:hover {
+  background-color: #faf9f9;
+}
+.song-item__select div {
+  transition: transform 0.2s ease-out;
+}
+.song-item__select:active div {
+  transform: translateY(-0.3rem);
 }
 
 .row {
