@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {selectedSong} from '../actions';
 
 class SongList extends React.Component {
-    render() {
-        const songsRendered = this.props.songs.map((song, index) => {
+    renderSongList() {
+        return this.props.songs.map((song, index) => {
             return (
                 <div key={index} className="song-item">
                     <div className="song-item__info">
@@ -15,8 +16,11 @@ class SongList extends React.Component {
                 </div>
             );
         })
+    }
+
+    render() {
         return (
-            <div className="song-list">{songsRendered}</div>
+            <div className="song-list">{this.renderSongList()}</div>
         );
     }
 }
@@ -30,4 +34,6 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(SongList);
+export default connect(mapStateToProps, {
+    selectedSong: selectedSong
+})(SongList);

@@ -149,13 +149,14 @@ body {
 }
 
 .song-item {
+  margin-left: 3.2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr max-content;
   border-bottom: 1px solid #ccc;
 }
 .song-item__info {
   padding: 0.528rem;
-  margin-left: 25%;
+  margin-left: 3.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
