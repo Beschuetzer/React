@@ -1,34 +1,20 @@
 import React from 'react';
-import youtube from '../apis/youtube';
 import SearchBar from './SearchBar';
 import VideoDetail from './VideoDetail';
 import VideoList from './VideoList';
 import {useState, useEffect} from 'react';
+import useVideo from '../hooks/useVideo';
 
 import './css/style.css';
 
 const App = () => {
-    const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
-
-    const onSearchSubmit = async (searchQuery) => {
-        try {
-            const results = await youtube.get(`/search`, {
-                params: {
-                    q: searchQuery,
-                }
-            });
-            setVideos(results.data.items);
-            setSelectedVideo(results.data.items[0]);
-        } catch (error) {
-            console.log('error =', error);
-        }
-    }
+    const [videos, onSearchSubmit] = useVideo("Welcome");
 
     useEffect(() => {
-        onSearchSubmit('Welcome');
-    }, [])
-
+        setSelectedVideo(videos[0]);
+    }, [videos])
+   
     return (
         <div className="grid">
             <SearchBar onSearchSubmit={onSearchSubmit}/>
