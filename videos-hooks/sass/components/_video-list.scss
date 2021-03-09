@@ -1,0 +1,15 @@
+.video-list {
+    padding: 0 1rem 1rem;
+    max-width: 100%;
+    min-width: 20rem;
+    margin-top: 0 !important;
+    @include respond(tab-port) {
+        min-width: 1rem;
+
+        padding: 1rem;
+        grid-column: 1/-1;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    }
+}

@@ -1,0 +1,8 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    grid-row: 1 / span 1;
+    grid-column: 1 / -1;
+}

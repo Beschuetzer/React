@@ -1,0 +1,20 @@
+.form {
+    width: 100%;
+    &__field {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+    &__field label {
+        
+    }
+    &__field input {
+        height: 3.75vh;
+        width: 100%;
+        max-width: 25rem;
+        padding: .5rem;
+        outline: none;
+    }
+}
