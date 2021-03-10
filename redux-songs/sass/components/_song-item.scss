@@ -47,3 +47,35 @@
 .song-list {
 
 }
+
+.song-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & h3 {
+        margin-bottom: auto;
+        padding-top: $default-font-size;
+    }
+    
+    &__title {
+        font-size: 1.5 * $default-font-size;
+        font-weight: 350;
+        padding: $default-font-size * .33;
+    }
+    &__artist {
+        font-size: 1.33 * $default-font-size;
+        font-weight: 400;
+        padding: $default-font-size * .33;
+        
+    }
+    &__duration {
+        font-size: 1.33 * $default-font-size;
+        font-weight: 350;
+        padding: $default-font-size * .33;
+    }
+    
+    &--nullMsg{
+        font-size: 1.75 * $default-font-size;
+    }
+}
