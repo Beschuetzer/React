@@ -1,37 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {selectSong} from '../actions';
 import Song from './Song';
 
-const SongList = ({songs}) => {
-    const renderSongList = () => {
-        return songs.map((song, index) => {
+class SongList extends React.Component {
+    renderSongList() {
+        return this.props.songs.map((song, index) => {
             return (
-                <Song key={index} song={song}/>
+                <Song selectedSong={this.props.selectedSong} key={index} song={song} selectSong={this.props.selectSong}/>
             );
         })
     }
 
-    return (
-        <div className="song-list">{renderSongList()}</div>
-    );
+    render() {
+        return (
+            <div className="song-list">{this.renderSongList()}</div>
+        );
+    }
 }
-
-// class SongList extends React.Component {
-//     renderSongList() {
-//         return this.props.songs.map((song, index) => {
-//             return (
-//                 <Song key={index} song={song}/>
-//             );
-//         })
-//     }
-
-//     render() {
-//         console.log('this.props =', this.props);
-//         return (
-//             <div className="song-list">{this.renderSongList()}</div>
-//         );
-//     }
-// }
 
 //This fn takes the state properties and maps them to this component's this.props object (e.g. below takes state.songs and maps it to this.props.songs)
 //key = this.props.key
@@ -40,7 +26,10 @@ const mapStateToProps = state => {
     console.log('state =', state);
     return { 
         songs: state.songs,
+        selectedSong: state.selectedSong,
     };
 }
 
-export default connect(mapStateToProps)(SongList);
+export default connect(mapStateToProps, {
+    selectSong: selectSong
+})(SongList);

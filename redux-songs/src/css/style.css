@@ -180,13 +180,17 @@ body {
   transition: background-color 0.33s ease;
 }
 .song-item__select:hover {
-  background-color: #faf9f9;
+  background-color: #f4f2f2;
 }
 .song-item__select div {
   transition: transform 0.2s ease-out;
 }
 .song-item__select:active div {
   transform: translateY(-0.3rem);
+}
+
+.isSelected {
+  background-color: #f4f2f2;
 }
 
 .row {
