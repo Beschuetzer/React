@@ -1,39 +1,46 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {selectedSong} from '../actions';
+import Song from './Song';
 
-class SongList extends React.Component {
-    renderSongList() {
-        return this.props.songs.map((song, index) => {
+const SongList = ({songs}) => {
+    const renderSongList = () => {
+        return songs.map((song, index) => {
             return (
-                <div key={index} className="song-item">
-                    <div className="song-item__info">
-                        <div className="song-item__title">{song.title}</div>
-                        <div className="song-item__artist">by {song.artist}</div>
-
-                    </div>
-                    <button className="song-item__select"><div>Select</div></button>
-                </div>
+                <Song key={index} song={song}/>
             );
         })
     }
 
-    render() {
-        return (
-            <div className="song-list">{this.renderSongList()}</div>
-        );
-    }
+    return (
+        <div className="song-list">{renderSongList()}</div>
+    );
 }
+
+// class SongList extends React.Component {
+//     renderSongList() {
+//         return this.props.songs.map((song, index) => {
+//             return (
+//                 <Song key={index} song={song}/>
+//             );
+//         })
+//     }
+
+//     render() {
+//         console.log('this.props =', this.props);
+//         return (
+//             <div className="song-list">{this.renderSongList()}</div>
+//         );
+//     }
+// }
 
 //This fn takes the state properties and maps them to this component's this.props object (e.g. below takes state.songs and maps it to this.props.songs)
 //key = this.props.key
 //value = this.props.key value
 const mapStateToProps = state => {
+    console.log('state =', state);
     return { 
         songs: state.songs,
     };
 }
 
-export default connect(mapStateToProps, {
-    selectedSong: selectedSong
-})(SongList);
+export default connect(mapStateToProps)(SongList);
