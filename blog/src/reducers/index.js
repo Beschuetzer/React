@@ -1,14 +1,11 @@
 
 import {combineReducers} from "redux";
-
-const fetchPostsReducer = () => {
-    
-}
+import postsReducer from './postsReducer';
 
 export default combineReducers({
     //reducer names and desired keys go here
     //e.g songs: selectedSongReducer,
-    removeMeLater: () => 10
+    posts: postsReducer,
 })
 
     
