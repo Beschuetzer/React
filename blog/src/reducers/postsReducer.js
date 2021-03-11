@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 
 const postsReducer = (state = [], action) => {
     switch(action.type) {
