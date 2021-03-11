@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 import _ from 'lodash';
 
@@ -6,8 +5,11 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     //whenever calling an action creator inside of another action creator, you have to dispatch the result of the called action creator:
     await dispatch(fetchPosts());
     const posts = getState().posts;
-    const uniqueUserIds = _.uniq(_.map(posts, "userId"));
-    uniqueUserIds.forEach(id => dispatch(fetchUser(id)));
+    _.chain(posts)
+        .map('userId')
+        .uniq()
+        .forEach(id => dispatch(fetchUser(id)))
+        .value();
 }
 
 export const fetchPosts = () => async (dispatch, getState) => {
@@ -21,8 +23,6 @@ export const fetchPosts = () => async (dispatch, getState) => {
 }
 
 export const fetchUser = (userId) => async (dispatch, getState) => {
-    console.log('fetchUser------------------------------------------------');
-    console.log('userId =', userId);
     const response = await jsonPlaceholder.get(`/users/${userId}`, {})
     dispatch({
         type: "FETCH_USER",
