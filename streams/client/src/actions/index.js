@@ -1,9 +1,12 @@
+export const signIn = () => {
+  return {
+    type: "SIGN_IN",
+  } 
+}
 
-//Example Action Creator
-//export const selectSong = (song) => {
-//    return {
-//        type: "SONG_SELECTED",
-//        payload: song,
-//    }
-//}
+export const signOut = () => {
+  return {
+    type: "SIGN_OUT",
+  }
+}
     
