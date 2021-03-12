@@ -16,7 +16,7 @@ export const streamsReducer = (streams = {}, action) => {
     case EDIT_STREAM:
       return { ...streams, [action.payload.id]: action.payload};
     case FETCH_STREAMS:
-      return { ...streams, ..._.mapKeys(streams, 'id')};
+      return { ...streams, ..._.mapKeys(action.payload, 'id')};
       //without lodash
       // const streamsCopy = { ...streams };
       // action.payload.forEach(stream => {
