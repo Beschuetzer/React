@@ -52,7 +52,6 @@ export const deleteStream = id => async (dispatch, getState) => {
   })
 }
 
-
 export const signIn = (userId) => {
   return {
     type: SIGN_IN,
