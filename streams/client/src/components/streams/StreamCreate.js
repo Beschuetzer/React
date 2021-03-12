@@ -1,5 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import {connect} from 'react-redux';
+import {createStream} from '../../actions';
 
 class StreamCreate extends React.Component {
     renderError({error, touched}) {
@@ -24,11 +26,13 @@ class StreamCreate extends React.Component {
         );
     }
 
-    onSubmit = ({title, description}) => {
-        //
+    onSubmit = (formValues) => {
+        console.log('formValues =', formValues);
+        this.props.createStream(formValues);
     }
 
     render() {
+        console.log('this.props =', this.props);
         return (
             //this.props.handleSubmit is a function from redux-form that you pass an onSubmit handler into.  It calls e.preventDefault() and passes each <Field>'s name and input value prop in as a key-value pair
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
@@ -62,7 +66,9 @@ const validate = (formValues) => {
     return errors;
 }
 
-export default reduxForm({
+const formWrapped = reduxForm({
     form: 'streamCreate',
     validate,
 })(StreamCreate);
+
+export default connect(null, {createStream})(formWrapped);
