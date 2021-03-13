@@ -10,6 +10,7 @@ import {
 export const streamsReducer = (streams = {}, action) => {
   switch(action.type) {
     case CREATE_STREAM:
+      console.log('action.payload =', action.payload);
       return { ...streams, [action.payload.id]: action.payload};
     case FETCH_STREAM:
       return { ...streams, [action.payload.id]: action.payload};
