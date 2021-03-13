@@ -9,7 +9,6 @@ import {
  } from "./types";
 import streams from '../apis/streams';
 import history from '../history';
-import axios from "axios";
 
 export const createStream = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth;
@@ -21,7 +20,7 @@ export const createStream = formValues => async (dispatch, getState) => {
       payload: { ...response.data, userId},
     })
     
-    history.push('/');
+    history.push  ('/');
   } catch (error) {
     console.log('error creating stream------------------------------------------------');
     console.log('error =', error);
@@ -37,7 +36,8 @@ export const fetchStreams = () => async (dispatch, getState) => {
 }
 
 export const fetchStream = (id) => async (dispatch, getState) => {
-  const response = await axios.get(`streams/${id}`);
+  console.log('fetchin------------------------------------------------');
+  const response = await streams.get(`streams/${id}`);
 
   dispatch({
     type: FETCH_STREAM, 
@@ -46,13 +46,13 @@ export const fetchStream = (id) => async (dispatch, getState) => {
 }
 
 export  const editStream = (id, newValues) => async (dispatch, getState) => {
-  const response = await axios.put(`streams/${id}`, newValues);
+  const response = await streams.put(`streams/${id}`, newValues);
 
   dispatch({type: EDIT_STREAM, payload: response.data});
 }
 
 export const deleteStream = id => async (dispatch, getState) => {
-  await axios.delete(`streams/${id}`);
+  await streams.delete(`streams/${id}`);
 
   dispatch({
     type: DELETE_STREAM,

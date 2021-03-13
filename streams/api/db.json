@@ -1,34 +1,34 @@
 {
-  "streams": [
-    {
-      "title": "testingadfad",
-      "description": "dfalkjdfdakfjad",
-      "userId": "106760760523927188152",
-      "id": 5
-    },
-    {
-      "title": "Not my stream",
-      "description": "this is not mine",
-      "userId": "106760760523927188153",
-      "id": 6
-    },
-    {
-      "title": "starting ",
-      "description": "should add new strea",
-      "userId": "106760760523927188152",
-      "id": 7
-    },
-    {
-      "title": "starting 2",
-      "description": " 2should add new strea",
-      "userId": "106760760523927188152",
-      "id": 8
-    },
-    {
-      "title": "new stream yay!",
-      "description": "Okalie dokalie",
-      "userId": "106760760523927188152",
-      "id": 9
-    }
-  ]
+	"streams": [
+		{
+			"title": "testingadfad",
+			"description": "dfalkjdfdakfjad",
+			"userId": "106760760523927188152",
+			"id": 5
+		},
+		{
+			"title": "Not my stream",
+			"description": "this is not mine",
+			"userId": "106760760523927188153",
+			"id": 6
+		},
+		{
+			"title": "starting ",
+			"description": "should add new strea",
+			"userId": "106760760523927188152",
+			"id": 7
+		},
+		{
+			"title": "starting 2",
+			"description": " 2should add new strea",
+			"userId": "106760760523927188152",
+			"id": 8
+		},
+		{
+			"title": "new stream yay!",
+			"description": "Okalie dokalie",
+			"userId": "106760760523927188152",
+			"id": 9
+		}
+	]
 }

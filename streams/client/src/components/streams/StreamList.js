@@ -9,7 +9,6 @@ class StreamList extends React.Component {
     }
 
     renderAdminButtons(stream) {
-        console.log('stream.userId =', stream.userId);
         const { currentUserId } = this.props;
         if (currentUserId && stream.userId === currentUserId) {
             return (
@@ -23,7 +22,6 @@ class StreamList extends React.Component {
     }
 
     renderList = () => {
-        console.log('this.props.streams =', this.props.streams);
         return this.props.streams.map(stream => {
             return (
                 <div key={stream.id} className="item">
