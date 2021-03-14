@@ -20,7 +20,7 @@ export const createStream = formValues => async (dispatch, getState) => {
       payload: { ...response.data, userId},
     })
     
-    history.push  ('/');
+    history.push('/');
   } catch (error) {
     console.log('error creating stream------------------------------------------------');
     console.log('error =', error);
@@ -46,9 +46,15 @@ export const fetchStream = (id) => async (dispatch, getState) => {
 }
 
 export  const editStream = (id, newValues) => async (dispatch, getState) => {
-  const response = await streams.put(`streams/${id}`, newValues);
+  try {
+    const response = await streams.patch(`streams/${id}`, newValues);
 
-  dispatch({type: EDIT_STREAM, payload: response.data});
+    dispatch({type: EDIT_STREAM, payload: response.data});
+    history.push('/');
+  } catch (err) {
+    console.log('error edit stream------------------------------------------------');
+    console.log('err =', err);
+  }
 }
 
 export const deleteStream = id => async (dispatch, getState) => {

@@ -1,7 +1,9 @@
 import React from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { editStream, fetchStream } from '../../actions';
 import StreamForm from './StreamForm';
+import history from '../../history';
 
 
 class StreamEdit extends React.Component {
@@ -9,7 +11,7 @@ class StreamEdit extends React.Component {
         if (!this.props.stream) this.props.fetchStream(this.props.match.params.id);
     }
     onSubmit = (formValues) => {
-        this.props.editStream(this.props.match.params.id, {...formValues, userId: this.props.userId});
+        this.props.editStream(this.props.match.params.id, formValues);
     }
     render() {
         if (!this.props.stream) {
@@ -18,8 +20,16 @@ class StreamEdit extends React.Component {
             );
         }
         else if (this.props.userId !== this.props.stream.userId) {
+            setTimeout(() => {
+                history.push('/');
+            }, 3000);
+
             return (
-                <div>You are not allowedd to edit this stream</div>
+                <div>
+                    <h3>Not Allowed</h3>
+                    <p>You are not allowed to edit this stream.</p>
+                    <p>Returning to list of streams...</p>
+                </div>
             )
         }
         else {
@@ -27,10 +37,7 @@ class StreamEdit extends React.Component {
                 <div>
                     <h3>Edit Stream:</h3>
                     <StreamForm 
-                        initialValues={{
-                            title: this.props.stream.title,
-                            description: this.props.stream.description,
-                    }} 
+                        initialValues={_.pick(this.props.stream, 'title', 'description')} 
                         onSubmit={this.onSubmit}
                     />
                 </div>
