@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchStream } from '../../actions';
 import Modal from '../Modal';
+import history from '../../history';
 
 class StreamDelete extends React.Component {
     componentDidMount() {
@@ -37,7 +38,7 @@ class StreamDelete extends React.Component {
                 header={this.renderHeader()}
                 content={this.renderContent()}
                 actions={this.renderActions()}
-                redirect="/"
+                onDismiss={() => history.push('/')}
             />
         );
     }
