@@ -1,21 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
-import validate from './validate';
 import { editStream, fetchStream } from '../../actions';
+import StreamForm from './StreamForm';
 
 
 class StreamEdit extends React.Component {
     componentDidMount() {
         if (!this.props.stream) this.props.fetchStream(this.props.match.params.id);
     }
+    onSubmit = (formValues) => {
+        this.props.editStream(this.props.match.params.id, {...formValues, userId: this.props.userId});
+    }
     render() {
-        if (!this.props.stream) return <div className="ui loading"></div>
+        if (!this.props.stream) {
+            return (
+                <div className="ui loading">Loading...</div>
+            );
+        }
+        else if (this.props.userId !== this.props.stream.userId) {
+            return (
+                <div>You are not allowedd to edit this stream</div>
+            )
+        }
         else {
             return (
                 <div>
-                    <h4>Edit Stream</h4>
-                    {this.props.stream.title}
+                    <h3>Edit Stream:</h3>
+                    <StreamForm 
+                        initialValues={{
+                            title: this.props.stream.title,
+                            description: this.props.stream.description,
+                    }} 
+                        onSubmit={this.onSubmit}
+                    />
                 </div>
             );
         }
@@ -25,16 +42,12 @@ class StreamEdit extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         stream: state.streams[ownProps.match.params.id],
+        userId: state.auth.userId,
     }
 }
 
-const wrappedForm = reduxForm({
-    form: 'StreamEdit',
-    validate,
-})(StreamEdit);
-
 export default connect(mapStateToProps, {
     editStream,
-    fetchStream
-})(wrappedForm);
+    fetchStream,
+})(StreamEdit);
 
