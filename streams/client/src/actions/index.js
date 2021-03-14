@@ -58,12 +58,18 @@ export  const editStream = (id, newValues) => async (dispatch, getState) => {
 }
 
 export const deleteStream = id => async (dispatch, getState) => {
-  await streams.delete(`streams/${id}`);
+  try {
+    await streams.delete(`streams/${id}`);
 
-  dispatch({
-    type: DELETE_STREAM,
-    payload: id,
-  })
+    dispatch({
+      type: DELETE_STREAM,
+      payload: id,
+    })
+    history.push('/');
+  }
+  catch (err) {
+    console.log('error deleteStream------------------------------------------------', err);
+  }
 }
 
 export const signIn = (userId) => {
