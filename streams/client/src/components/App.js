@@ -7,6 +7,7 @@ import StreamDelete from "./streams/StreamDelete";
 import StreamEdit from "./streams/StreamEdit";
 import StreamList from "./streams/StreamList";
 import StreamShow from "./streams/StreamShow";
+import translate from './translate/Translate';
 import history from '../history';
 
 // import "../css/style.css";
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/streams/delete/:id" exact component={StreamDelete} />
             <Route path="/streams/:id" exact component={StreamShow} />
           </Switch>
+          <Route path='/translate' exact component={translate}/>
         </div>
       </Router>
     </div>
