@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchStreams } from '../../actions';
-
+import history from '../../history';
 class StreamList extends React.Component {
     componentDidMount() {
         this.props.fetchStreams();
@@ -20,7 +20,9 @@ class StreamList extends React.Component {
         }
         return null;
     }
-
+    // showStream = (stream) => {
+    //     history.push(`/streams/show/${stream.id}`)
+    // }
     renderList = () => {
         return this.props.streams.map(stream => {
             return (
@@ -28,7 +30,9 @@ class StreamList extends React.Component {
                     {this.renderAdminButtons(stream)}
                     <i className="large middle aligned icon camera"/>
                     <div className="content">
-                        {stream.title}
+                        <Link to={`/streams/${stream.id}`} className="header">
+                            {stream.title}
+                        </Link>
                         <div className="description">{stream.description}</div>
                     </div>
                 </div>
