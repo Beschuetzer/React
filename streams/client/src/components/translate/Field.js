@@ -13,7 +13,7 @@ class Field extends React.Component {
     this.imageRef = React.createRef();
   }
   render() {
-    const text = this.context === 'english' ? 'Street' : 'Strasse';
+    const text = this.context.language === 'english' ? 'Street' : 'Strasse';
     return (
       <div className="ui field">
         <label>{text}</label>

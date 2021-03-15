@@ -12,7 +12,7 @@ class Button extends React.Component {
       <button className={`ui button ${color}`}>
         <LanguageContext.Consumer>
           {
-            (language) => this.renderSubmit(language)
+            ({language}) => this.renderSubmit(language)
           }
         </LanguageContext.Consumer>
       </button>
